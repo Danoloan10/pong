@@ -40,7 +40,7 @@ void GameEngine::events()
 {
 		sf::Event event;
 
-		if(this->window->pollEvent(event)){
+		while(this->window->pollEvent(event)){
 			switch(event.type){
 			case sf::Event::Closed:
 				this->window->close();

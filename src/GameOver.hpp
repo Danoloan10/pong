@@ -16,6 +16,7 @@ public:
 	void render(GameEngine* game, float interp);
 protected:
 	GameOver();
+	Button cont;
 };
 
 #endif

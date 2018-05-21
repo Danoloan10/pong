@@ -9,7 +9,7 @@ MainMenu::MainMenu()
 void MainMenu::init(GameEngine* game)
 {
 	sf::Font * font = new sf::Font();
-	if(!font->loadFromFile("Inconsolata-Bold.ttf"));
+	if(!font->loadFromFile("res/Inconsolata-Bold.ttf"));
 	sf::Window* window = game->get_window();
 	sf::Vector2f center(window->getSize().x/2, window->getSize().y/2);
 	this->play_but = Button(center-sf::Vector2f(100,25), sf::Vector2f(200,50), "PLAY");
