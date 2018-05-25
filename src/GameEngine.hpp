@@ -18,6 +18,8 @@ public:
 	void push_state(IGameState* state);
 	void pop_state();
 
+	void save_score();
+
 	void events();
 	void update();
 	void render(float interp);
@@ -29,6 +31,9 @@ public:
 
 	GameEngine(std::string title){ this->init(title); }
 	~GameEngine(){ this->clear(); }
+	
+	std::string lastName;
+	int lastScore;
 private:
 	std::vector<IGameState*> states;
 	sf::RenderWindow* window;

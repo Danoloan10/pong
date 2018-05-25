@@ -10,6 +10,7 @@ void GameEngine::init(std::string title)
 
 void GameEngine::clear()
 {
+
 }
 
 void GameEngine::change_state(IGameState* state)
