@@ -1,3 +1,8 @@
+//CONSTANTS
+static const float TICKS_PER_SECOND = 60;
+static const float SKIP_MILLIS = 1000 / TICKS_PER_SECOND;
+static const int MAX_FPS_SKIP = 5;
+
 #include <SFML/System.hpp>
 #include "GameEngine.hpp"
 
@@ -11,11 +16,6 @@ static sf::Time update_t;
 
 //RUNTIME
 static bool is_running = true;
-
-//CONSTANTS
-const float TICKS_PER_SECOND = 0.25;
-const float SKIP_MILLIS = 1000 / TICKS_PER_SECOND;
-const int MAX_FPS_SKIP = 5;
 
 //HEADERS
 /*

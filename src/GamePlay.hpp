@@ -3,7 +3,7 @@
 
 class GamePlay : public IGameState{
 public:
-	static GamePlay& get_instance(){ static GameOver g; return g; } //TODO duda
+	static GamePlay& get_instance(){ static GamePlay g; return g; } //TODO duda
 
 	void init(GameEngine* game);
 	void clear(GameEngine* game);
@@ -15,8 +15,25 @@ public:
 	void update(GameEngine* game);
 	void render(GameEngine* game, float interp);
 protected:
-	GameMain main;
 	GamePlay();
+private:
+	sf::RectangleShape walls [4];
+	sf::RectangleShape floor;
+
+	sf::RectangleShape bar;
+	sf::RectangleShape ball;
+
+	sf::RectangleShape sidebar;
+	
+	Button buttons[2];
+
+	int v_h = 0;
+	int v_v = 0;
+
+	const int V = 3;
+
+	bool running = true;
+	bool over = false;
 };
 
 #endif

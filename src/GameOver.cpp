@@ -39,14 +39,10 @@ void GameOver::events(GameEngine* game, sf::Event event)
 {
 	switch(event.type){
 	case sf::Event::MouseMoved:
-		if(this->cont.over(sf::Vector2f(event.mouseMove.x,event.mouseMove.y))){
-			this->cont.is_hover = true;
-		}else{
-			this->cont.is_hover = false;
-		}
+		this->cont.hover_point(sf::Vector2f(event.mouseMove.x,event.mouseMove.y));
 		break;
 	case sf::Event::MouseButtonPressed:
-		if(this->cont.over(sf::Vector2f(event.mouseButton.x,event.mouseButton.y))){
+		if(this->cont.hover_point(sf::Vector2f(event.mouseButton.x,event.mouseButton.y))){
 			game->change_state(&(MainMenu::get_instance()));
 		}
 	}

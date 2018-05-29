@@ -4,13 +4,29 @@
 
 void GameEngine::init(std::string title)
 {
+		this->running = true;
 		this->window = new sf::RenderWindow(sf::VideoMode(800,600), title, sf::Style::Titlebar);
 		this->window->clear();
+		this->load_font("Inconsolata-Bold");
 }
 
 void GameEngine::clear()
 {
 
+}
+
+void GameEngine::load_font(std::string font){
+	if(this->fonts.find(font) == this->fonts.end()){
+		sf::Font * new_font = new sf::Font();
+		if(new_font->loadFromFile("res/"+font+".ttf"))
+			this->fonts[font] = new_font;
+	}
+}
+
+sf::Font* GameEngine::get_font(std::string font){
+	if(this->fonts.find(font) != this->fonts.end())
+		return this->fonts[font];
+	return NULL;
 }
 
 void GameEngine::change_state(IGameState* state)
@@ -56,8 +72,10 @@ void GameEngine::update()
 {
 		this->states.back()->update(this);
 		
-		if(!this->window->isOpen())
+		if(!this->window->isOpen()){
+			this->clear();
 			this->quit();
+		}
 }
 
 void GameEngine::render(float interp)

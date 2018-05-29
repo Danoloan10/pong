@@ -8,8 +8,7 @@ MainMenu::MainMenu()
 
 void MainMenu::init(GameEngine* game)
 {
-	sf::Font * font = new sf::Font();
-	if(!font->loadFromFile("res/Inconsolata-Bold.ttf"));
+	sf::Font * font = game->get_font("Inconsolata-Bold");
 	sf::Window* window = game->get_window();
 	sf::Vector2f center(window->getSize().x/2, window->getSize().y/2);
 	this->play_but = Button(center-sf::Vector2f(100,25), sf::Vector2f(200,50), "PLAY");
@@ -27,36 +26,25 @@ void MainMenu::clear(GameEngine* game)
 
 void MainMenu::pause()
 {
-		return /* something */;
 }
 
 
 void MainMenu::resume()
 {
-		return /* something */;
 }
 
 void MainMenu::events(GameEngine* game, sf::Event event){
 	switch(event.type){
 	case sf::Event::MouseMoved:
-		if(this->play_but.over(sf::Vector2f(event.mouseMove.x,event.mouseMove.y))){
-			this->play_but.is_hover = true;
-		}else{
-			this->play_but.is_hover = false;
-		}
-
-		if(this->quit_but.over(sf::Vector2f(event.mouseMove.x, event.mouseMove.y))){
-			this->quit_but.is_hover = true;
-		}else{
-			this->quit_but.is_hover = false;
-		}
+		this->play_but.hover_point(sf::Vector2f(event.mouseMove.x,event.mouseMove.y));
+		this->quit_but.hover_point(sf::Vector2f(event.mouseMove.x, event.mouseMove.y));
 		break;
 	case sf::Event::MouseButtonPressed:
-		if(this->quit_but.over(sf::Vector2f(event.mouseButton.x,event.mouseButton.y))){
+		if(this->quit_but.hover_point(sf::Vector2f(event.mouseButton.x,event.mouseButton.y))){
 			game->get_window()->close();
 		}else
-		if(this->play_but.over(sf::Vector2f(event.mouseButton.x,event.mouseButton.y))){
-			game->change_state(&(GameOver::get_instance()));
+		if(this->play_but.hover_point(sf::Vector2f(event.mouseButton.x,event.mouseButton.y))){
+			game->change_state(&(GamePlay::get_instance()));
 		}
 		break;
 	}

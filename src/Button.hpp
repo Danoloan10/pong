@@ -28,6 +28,7 @@ struct Button{
 		size = s;
 		text->setString(t);
 	}
+	Button(sf::Vector2f s, std::string t) : Button(sf::Vector2f(0,0), s, t){}
 	sf::Text& get_text(){
 		text->setPosition(pos + 
 						  sf::Vector2f(size.x/2, size.y/2) - 
@@ -61,11 +62,14 @@ struct Button{
 		return rect;
 	}
 
-	bool over(sf::Vector2f point){
-		return (point.x > pos.x-10) &&
-			   (point.x < pos.x+size.x+10) &&
-			   (point.y > pos.y-10) &&
-			   (point.y < pos.y+size.y+10);
+	bool hover_point(sf::Vector2f point){
+		if((point.x > pos.x-10) &&
+		   (point.x < pos.x+size.x+10) &&
+		   (point.y > pos.y-10) &&
+		   (point.y < pos.y+size.y+10))
+			is_hover = true;
+		else is_hover = false;
+		return is_hover;
 	}
 };
 

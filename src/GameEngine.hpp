@@ -19,6 +19,8 @@ public:
 	void pop_state();
 
 	void save_score();
+	
+	sf::Font * get_font(std::string);
 
 	void events();
 	void update();
@@ -35,7 +37,9 @@ public:
 	std::string lastName;
 	int lastScore;
 private:
+	void load_font(std::string font);
 	std::vector<IGameState*> states;
+	std::map<std::string,sf::Font*> fonts;
 	sf::RenderWindow* window;
 	bool running;
 };
