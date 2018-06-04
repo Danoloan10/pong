@@ -9,8 +9,7 @@ GameOver::GameOver()
 
 void GameOver::init(GameEngine* game)
 {
-	sf::Font * inc_bold = new sf::Font();
-	inc_bold->loadFromFile("res/Inconsolata-Bold.ttf");
+	sf::Font * inc_bold = game->get_font("Inconsolata-Bold");
 	sf::Window * window = game->get_window();
 	this->cont = Button(sf::Vector2f(window->getSize().x/2.0f, window->getSize().y*2.0f/3.0f)-sf::Vector2f(100,25), 
 		      sf::Vector2f(200,50),

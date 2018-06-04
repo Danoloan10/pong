@@ -20,7 +20,7 @@ $(ODIR)/%.o: $(SDIR)/%.cpp $(DEPS)
 	$(CC) -c -o $@ $<
 
 $(DODIR)/%-d.o: $(SDIR)/%.cpp $(DEPS)
-	$(CC) -c -o -g $@ $<
+	$(CC) -c -g -o $@ $<
 
 $(BDIR)/$(BIN): $(OBJ)
 	$(CC) -o $@ $^ $(LIBS)

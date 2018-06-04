@@ -4,8 +4,8 @@ static const float SKIP_MILLIS = 1000 / TICKS_PER_SECOND;
 static const int MAX_FPS_SKIP = 5;
 
 #include <SFML/System.hpp>
-#include "GameEngine.hpp"
 
+#include "GameEngine.hpp"
 #include "IGameState.hpp"
 
 #include <iostream>

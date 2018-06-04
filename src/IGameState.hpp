@@ -21,9 +21,12 @@ protected:
 	IGameState(){}
 };
 
+#include "ScoreBoard.hpp"
+
 #include "Button.hpp"
 #include "MainMenu.hpp"
 #include "GamePlay.hpp"
+#include "Name.hpp"
 #include "GameOver.hpp"
 
 #endif

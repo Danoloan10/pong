@@ -25,15 +25,29 @@ private:
 
 	sf::RectangleShape sidebar;
 	
+	sf::Text score_title;
+	sf::Text score_show;
+
 	Button buttons[2];
 
 	int v_h = 0;
 	int v_v = 0;
 
-	const int V = 3;
+	int score = 0;
 
-	bool running = true;
+	static const int MAX_SCORE = 100;
+	static const int MAX_TIME = 40;
+	int ticks = 0;
+	int score_now = 0;
+
+	const int V = 5;
+	
+	bool left = false;
+	bool right = false;
+
+	bool running = false;
 	bool over = false;
+	bool win = false;
 };
 
 #endif

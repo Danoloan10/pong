@@ -1,6 +1,8 @@
 #ifndef GAMENG_H
 #define GAMENG_H
 
+#include "ScoreBoard.hpp"
+
 #include <vector>
 #include <string>
 #include <SFML/Window.hpp>
@@ -17,10 +19,8 @@ public:
 //	void change_state(State state);
 	void push_state(IGameState* state);
 	void pop_state();
-
-	void save_score();
 	
-	sf::Font * get_font(std::string);
+	sf::Font * get_font(std::string = "Inconsolata-Bold");
 
 	void events();
 	void update();
@@ -33,14 +33,16 @@ public:
 
 	GameEngine(std::string title){ this->init(title); }
 	~GameEngine(){ this->clear(); }
-	
-	std::string lastName;
-	int lastScore;
+
+	void set_last_score(int score);
+	int  get_last_score();
 private:
+	ScoreBoard* sb;
 	void load_font(std::string font);
 	std::vector<IGameState*> states;
 	std::map<std::string,sf::Font*> fonts;
 	sf::RenderWindow* window;
 	bool running;
+	int last_score = 0;
 };
 #endif
